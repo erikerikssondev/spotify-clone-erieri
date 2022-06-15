@@ -1,21 +1,22 @@
 import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
+import SongTable from "../SongTable/SongTable";
 
-const Playlist = (props) => {
+const Playlist = ({ songs }) => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.paper",
+        bgcolor: "background.paper",
         flex: 1,
         overflowY: "auto",
       }}
     >
       <Box
         p={{ xs: 3, md: 4 }}
+        id="findme"
         sx={{
           width: "100%",
-          background:
-            "linear-gradient(0deg, rgba(17,38,25,1) 0% rgba(24,115,38,1) 100%);",
+          background: "linear-gradient(0deg, #1ed76010 0%, #1db95470 100%);",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: { xs: "flex-start", md: "flex-end", xl: "center" },
@@ -43,6 +44,7 @@ const Playlist = (props) => {
           </Typography>
         </Box>
       </Box>
+      <SongTable songs={songs} />
     </Box>
   );
 };

@@ -1,8 +1,9 @@
 import "./App.css";
-import SideNav from "./SideNav/SideNav.js";
-import Playlist from "./Playlist/Playlist.js";
+import SideNav from "../SideNav/SideNav.js";
+import Playlist from "../Playlist/Playlist.js";
 import { Box } from "@mui/material";
-import { display } from "@mui/system";
+import MobilNav from "../MobileNav/MobileNav";
+import { Routes, Route } from "react-router-dom";
 
 const mockData = [
   { name: "Rock", playlistId: 123, image: "/Justin-Bieber.png" },
@@ -10,6 +11,79 @@ const mockData = [
   { name: "Hip hop", playlistId: 834, image: "/Justin-Bieber.png" },
   { name: "X-mas", playlistId: 5503, image: "/Justin-Bieber.png" },
   { name: "Code life", playlistId: 4832, image: "/Justin-Bieber.png" },
+];
+
+const songs = [
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
+  {
+    image: "/Justin-Bieber.png",
+    title: "Holy",
+    artist: "Justin Bieber",
+    album: "No clue",
+    duration: 180,
+  },
 ];
 
 function App() {
@@ -25,26 +99,47 @@ function App() {
       >
         <Box sx={{ flex: 1, overflowY: "auto", display: "flex" }}>
           <SideNav playlists={mockData} />
-          <Playlist />
+          <Routes>
+            <Route path="/playlist/:id" element={<Playlist songs={songs} />} />
+            <Route
+              path="/search"
+              element={<h1 style={{ color: "white" }}>Search</h1>}
+            />
+            <Route
+              path="/library"
+              element={<h1 style={{ color: "white" }}>Library</h1>}
+            />
+            <Route
+              path="/"
+              element={<h1 style={{ color: "white" }}>Home</h1>}
+            />
+          </Routes>
         </Box>
-        <Box
-          sx={{
-            width: "100%",
-            height: 25,
-            bgcolor: "primary.main",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            fontSize: 14,
-            boxSizing: "border-box",
-            paddingRight: "10px",
-          }}
-        >
-          Made with love by Techover Academy
-        </Box>
+        <MobilNav />
+        <Banner />
       </Box>
     </Box>
   );
 }
+
+const Banner = () => {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        height: 25,
+        bgcolor: "primary.main",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
+        fontSize: 14,
+        boxSizing: "border-box",
+        paddingRight: "10px",
+      }}
+    >
+      Made with love by Techover Academy
+    </Box>
+  );
+};
 
 export default App;
