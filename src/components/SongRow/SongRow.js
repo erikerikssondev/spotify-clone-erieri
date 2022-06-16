@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar, Box, Typography, Grid, Divider } from "@mui/material";
+import { formatTime } from "../../Utilities/functions";
 
 const SongRow = ({ image, title, artist, album, duration, i }) => {
   return (
@@ -24,7 +25,7 @@ const SongRow = ({ image, title, artist, album, duration, i }) => {
         item
         sx={{ flex: 1, display: "flex", alignItems: "center", gap: 2 }}
       >
-        <Avatar src="{image}" alt={title} variant="square" />
+        <Avatar src="/Justin-Bieber.png" alt={title} variant="square" />
         <Box ml={1}>
           <Typography sx={{ fontSize: 16, color: "text.primary" }}>
             {title}
@@ -53,7 +54,7 @@ const SongRow = ({ image, title, artist, album, duration, i }) => {
           alignItems: "center",
         }}
       >
-        {duration}
+        {formatTime(duration)}
       </Grid>
     </Grid>
   );

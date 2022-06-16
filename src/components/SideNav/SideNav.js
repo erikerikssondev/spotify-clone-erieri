@@ -16,7 +16,7 @@ const SideNav = ({ playlists }) => {
   return (
     <Box
       sx={{
-        bgcolor: "Background.default",
+        bgcolor: "background.default",
         width: 230,
         height: "100%",
         display: { xs: "none", md: "flex" },

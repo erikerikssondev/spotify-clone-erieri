@@ -13,7 +13,6 @@ const Playlist = ({ songs }) => {
     >
       <Box
         p={{ xs: 3, md: 4 }}
-        id="findme"
         sx={{
           width: "100%",
           background: "linear-gradient(0deg, #1ed76010 0%, #1db95470 100%);",
@@ -26,7 +25,7 @@ const Playlist = ({ songs }) => {
         }}
       >
         <Avatar
-          src="/img/Justin-Bieber.png"
+          src="/Justin-Bieber.png"
           variant="square"
           alt="Bieber"
           sx={{
