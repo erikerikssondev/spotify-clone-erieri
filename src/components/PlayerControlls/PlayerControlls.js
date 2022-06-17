@@ -35,7 +35,7 @@ const PlayerControlls = ({ sliderStyle }) => {
             <SkipPrevious sx={skipStyle} />
           </IconButton>
           <IconButton size="small" sx={{ color: "text.primary" }}>
-            <PlayArrow sx={{ width: 38, height: 38 }} />
+            <PlayArrow sx={{ width: 26, height: 38 }} />
           </IconButton>
           <IconButton size="small" sx={{ color: "text.primary" }}>
             <SkipNext sx={skipStyle} />

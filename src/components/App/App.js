@@ -10,15 +10,10 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import SpotifyWebApi from "spotify-web-api-node";
 import { fetchUser, fetchPlaylist } from "../../store/actions/index";
 
-function App({ token, fetchUser, fetchPlaylist }) {
-  const spotifyApi = new SpotifyWebApi();
-
+function App({ token, fetchUser, fetchPlaylist, spotifyApi }) {
   useEffect(() => {
-    spotifyApi.setAccessToken(token);
-
     const getData = async () => {
       fetchUser(spotifyApi);
       fetchPlaylist(spotifyApi);
