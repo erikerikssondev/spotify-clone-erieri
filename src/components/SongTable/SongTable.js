@@ -5,7 +5,26 @@ import SongRow from "../SongRow/SongRow";
 
 const SongTable = ({ songs }) => {
   const renderSongs = () =>
-    songs.map((song, i) => <SongRow {...song} key={i} i={i} />);
+    songs.map((song, i) => {
+      const albumName = song.album.name;
+      // TODO will cause crashes when there are no images
+      const image = song.album.images[0].url;
+      const title = song.name;
+      const artist = song.artists[0].url;
+      const duration = song.duration_ms / 1000;
+
+      return (
+        <SongRow
+          album={albumName}
+          image={image}
+          title={title}
+          artist={artist}
+          duration={duration}
+          key={i}
+          i={i}
+        />
+      );
+    });
 
   return (
     <Box

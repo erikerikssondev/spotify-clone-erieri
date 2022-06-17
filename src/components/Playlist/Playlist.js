@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Box, Typography } from "@mui/material";
 import SongTable from "../SongTable/SongTable";
+import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Playlist = ({ songs }) => {
+const Playlist = ({ spotifyApi, loading }) => {
+  const [playlistInfo, setPlaylistInfo] = useState();
+  const [songs, setSongs] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getData = async () => {
+      const playlistDetail = await spotifyApi.getPlaylist(id);
+
+      setPlaylistInfo({
+        image: playlistDetail.body.images[0].url,
+        name: playlistDetail.body.name,
+      });
+
+      const { tracks } = playlistDetail.body;
+      const formattedSongs = formatSongData(tracks.items);
+      setSongs(formattedSongs);
+    };
+
+    getData();
+  }, [id]);
+
+  const formatSongData = (songs) => {
+    return songs.map((song, i) => {
+      const { track } = song;
+      track.contextUri = `spotify:playlist:${id}`;
+      track.position = i;
+      return track;
+    });
+  };
+
   return (
     <Box
       sx={{
@@ -25,7 +57,7 @@ const Playlist = ({ songs }) => {
         }}
       >
         <Avatar
-          src="/Justin-Bieber.png"
+          src={playlistInfo?.image}
           variant="square"
           alt="Bieber"
           sx={{
@@ -39,7 +71,7 @@ const Playlist = ({ songs }) => {
             Playlist
           </Typography>
           <Typography sx={{ fontSize: { xs: 42, md: 72 }, fontWeight: "bold" }}>
-            Code life
+            {playlistInfo?.name}
           </Typography>
         </Box>
       </Box>
@@ -48,4 +80,8 @@ const Playlist = ({ songs }) => {
   );
 };
 
-export default Playlist;
+const mapState = (state) => {
+  return { loading: state.playlist.loading };
+};
+
+export default connect(mapState)(Playlist);
