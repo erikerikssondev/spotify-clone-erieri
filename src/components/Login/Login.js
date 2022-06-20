@@ -14,7 +14,7 @@ const Login = () => {
       }}
     >
       <img
-        src="/img/Spotify_Logo_RGB_White.png"
+        src="/Spotify_Logo_RGB_White.png"
         alt="Erik Eriksson"
         style={{ marginBottom: 300, width: "70%", maxWidth: 500 }}
       />

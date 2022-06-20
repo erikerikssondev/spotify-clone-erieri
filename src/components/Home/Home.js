@@ -14,7 +14,7 @@ const Home = () => {
       }}
     >
       <img
-        src="/TA-logo.png"
+        src="/Spotify_Logo_RGB_White.png"
         style={{ maxHeight: "50%", maxWidth: "50%" }}
         alt="Erik Eriksson"
       />
@@ -22,7 +22,8 @@ const Home = () => {
         size="large"
         variant="contained"
         onClick={() =>
-          (window.location.href = "https://www.academy.techover.nu")
+          (window.location.href =
+            "https://www.linkedin.com/in/erik-eriksson-966b84218/")
         }
       >
         Contact

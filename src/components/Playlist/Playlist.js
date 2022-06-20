@@ -47,7 +47,7 @@ const Playlist = ({ spotifyApi, loading }) => {
         p={{ xs: 3, md: 4 }}
         sx={{
           width: "100%",
-          background: "linear-gradient(0deg, #1ed76010 0%, #1db95470 100%);",
+          background: "linear-gradient(0deg, #1ed76040 10%, #1db95495 100%);",
           display: "flex",
           justifyContent: "flex-start",
           alignItems: { xs: "flex-start", md: "flex-end", xl: "center" },

@@ -28,11 +28,7 @@ const SideNav = ({ playlists, loading }) => {
       }}
     >
       <Box p={3}>
-        <img
-          src="/img/Spotify_Logo_RGB_White.png"
-          width={"75%"}
-          alt="Spotify"
-        />
+        <img src="/Spotify_Logo_RGB_White.png" width={"75%"} alt="Spotify" />
       </Box>
       <NavItem name="Home" Icon={HomeRoundedIcon} target="/" active />
       <NavItem name="Search" Icon={SearchRoundedIcon} target="/search" />

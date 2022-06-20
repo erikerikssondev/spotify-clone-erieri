@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavItem = ({ name, Icon, target, active }) => {
   return (
-    <Link to={target} style={{ textDecoration: "none" }}>
+    <NavLink to={target} style={{ textDecoration: "none" }}>
       <Box
         px={3}
         py={1}
@@ -21,7 +21,7 @@ const NavItem = ({ name, Icon, target, active }) => {
         {Icon && <Icon sx={{ fontSize: 28, marginRight: 1 }} />}
         {name}
       </Box>
-    </Link>
+    </NavLink>
   );
 };
 

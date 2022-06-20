@@ -12,7 +12,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 const spotifyApi = new SpotifyWebApi({
   clientId: "8e0e42e2cfb44f8c9f9b6bf9b087a2fe",
   clientSecret: "73d34039755f452aa7745b6f061d82b6",
-  redirectUri: "https://spotify-clone-eriksson.herokuapp.com",
+  redirectUri: "http://localhost:3000/",
 });
 const store = configureStore(spotifyApi);
 
