@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Grid, Typography, Avatar } from "@mui/material";
 import PlayerControlls from "../PlayerControlls/PlayerControlls";
 import VolumeControlls from "../VolumeControlls/VolumeControlls";
+import { connect } from "react-redux";
+import { updateSongInfoStart } from "../../store/actions/index";
+import PlayerOverlay from "../PlayerOverlay/PlayerOverlay";
+import { openOverlay } from "../../store/actions/index";
 
-const Player = () => {
+const Player = ({
+  spotifyApi,
+  updateSongInfoStart,
+  title,
+  artist,
+  image,
+  openOverlay,
+  playerOverlayOpen,
+}) => {
   const sliderStyle = {
     color: "#fff",
     height: 4,
@@ -36,8 +48,18 @@ const Player = () => {
     },
   };
 
+  useEffect(() => {
+    updateSongInfoStart(spotifyApi);
+  }, []);
+
+  const handleOpenOverlay = () => {
+    if (!playerOverlayOpen) {
+      openOverlay();
+    }
+  };
+
   return (
-    <Box>
+    <Box onClick={handleOpenOverlay}>
       <Grid
         container
         px={3}
@@ -50,7 +72,8 @@ const Player = () => {
       >
         <Grid
           item
-          xs={3}
+          xs={12}
+          md={3}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -58,25 +81,48 @@ const Player = () => {
           }}
         >
           <Avatar
-            src="/Justin-Bieber.png"
-            alt="Bieber"
+            src={image?.url}
+            alt={artist}
             variant="square"
             sx={{ width: 56, height: 56, marginRight: 2 }}
           />
           <Box>
             <Typography sx={{ color: "text.primary", fontSize: 14 }}>
-              Holy
+              {title}
             </Typography>
             <Typography sx={{ color: "text.secondary", fontSize: 12 }}>
-              Justin Bieber
+              {artist}
             </Typography>
           </Box>
         </Grid>
-        <PlayerControlls sliderStyle={sliderStyle} />
-        <VolumeControlls sliderStyle={sliderStyle} />
+        <Grid
+          item
+          sx={{
+            display: { xs: "none", md: "flex" },
+            flex: 1,
+            justifyContent: { xs: "flex-end", md: "center" },
+            alignItems: "center",
+          }}
+        >
+          <PlayerControlls sliderStyle={sliderStyle} spotifyApi={spotifyApi} />
+        </Grid>
+        <VolumeControlls sliderStyle={sliderStyle} spotifyApi={spotifyApi} />
       </Grid>
+      <PlayerOverlay sliderStyle={sliderStyle} spotifyApi={spotifyApi} />
     </Box>
   );
 };
 
-export default Player;
+const mapState = (state) => {
+  const { title, artist, image, playerOverlayOpen } = state.player;
+  return { title, artist, image, playerOverlayOpen };
+};
+
+const mapDispatch = (dispatch) => {
+  return {
+    updateSongInfoStart: (api) => dispatch(updateSongInfoStart(api)),
+    openOverlay: () => dispatch(openOverlay()),
+  };
+};
+
+export default connect(mapState, mapDispatch)(Player);

@@ -67,15 +67,23 @@ const Playlist = ({ spotifyApi, loading }) => {
           }}
         />
         <Box>
-          <Typography sx={{ fontSize: 12, fontWeight: "bold" }}>
+          <Typography
+            sx={{ fontSize: 12, fontWeight: "bold", color: "text.primary" }}
+          >
             Playlist
           </Typography>
-          <Typography sx={{ fontSize: { xs: 42, md: 72 }, fontWeight: "bold" }}>
+          <Typography
+            sx={{
+              fontSize: { xs: 42, md: 72 },
+              fontWeight: "bold",
+              color: "text.primary",
+            }}
+          >
             {playlistInfo?.name}
           </Typography>
         </Box>
       </Box>
-      <SongTable songs={songs} />
+      <SongTable songs={songs} loading={loading} spotifyApi={spotifyApi} />
     </Box>
   );
 };
