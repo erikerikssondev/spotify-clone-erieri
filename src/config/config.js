@@ -1,8 +1,8 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 export const clientId = "8e0e42e2cfb44f8c9f9b6bf9b087a2fe";
-export const liveURL = "...";
+export const liveURL = "https://singular-mandazi-3fdfbe.netlify.app";
 export const devURL = "http://localhost:3000/";
-export const redirectURL = devURL;
+export const redirectURL = liveURL;
 export const scopes = [
   "ugc-image-upload",
   "user-modify-playback-state",
